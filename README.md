@@ -2,34 +2,23 @@
 Compressed sensing scheme recovering single cell expression profile 
 https://doi.org/10.1101/338319
 
-Put ***star.m***, ***process.m***, ***recover.m***, ***l1eq_pd.m*** in the same floder. You only need run ***star.m***.
+Put ***star.m***, ***process.m***, ***recover.m***, ***l1eq_pd.m*** in the same folder. You only need use **MATLAB** to run ***star.m***.
 
-***star.m*** calls ***process.m*** 
+Enter the following code in the command-line window.
 
-~~~matlab
-```[X,M,R] = process(k,pcell,p,alpha);```
-~~~
+```matlab
+star(k,pcell,p,alpha);
+```
 
-and calculates the correlation coefficient.
 
-***process.m*** divides the data into block and calls ***recover.m*** to infer the data. 
+***star.m*** calls ***process.m***.（line21）and calculates the correlation coefficient.
 
-~~~matlab
-```[MM,recoverXX] = recover(floor(k*size(XX,1))*2,size(XX,1),p,XX,alpha);```
-~~~
+***process.m*** divides the data into block and calls ***recover.m*** to infer the data. （line42）
 
-(**WARNING**) In ***process.m***, you need to set the path of your data file. 
-
-~~~matlab
-```original = importdata('count4070.txt');```
-~~~
+(**WARNING**) In ***process.m***, you need to set the path of your data file. （line15）
 
 And You need to make sure that the read data matrix is $cells×genes$.
 
-​***recover.m*** calls ***l1eq_pd.m*** to complete Compressed Sensing.
+***recover.m*** calls ***l1eq_pd.m*** to complete Compressed Sensing.（line43)
 
-~~~matlab
-```xp = l1eq_pd(x0, M, [], y);```
-~~~
-
-You can use ***smallCS.m*** as an example to run
+You can use ***smallCS.m*** as an example to run.
